@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Sabijadhikari</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1b1b1b;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s;
+        }
+        .header .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #00ff90;
+        }
+        .header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+        }
+        .header nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        .header nav ul li a:hover {
+            color: #00ff90;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 100px 20px 50px;
+            background-color: #1b1b1b;
+            text-align: center;
+            animation: fadeInUp 1.5s;
+        }
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            animation: slideInLeft 1.2s;
+        }
+        .hero p {
+            font-size: 1rem;
+            color: #b3b3b3;
+            margin-bottom: 20px;
+        }
+        .hero .btn {
+            background-color: #00ff90;
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .hero .btn:hover {
+            transform: scale(1.1);
+        }
+        .hero img {
+            border-radius: 50%;
+            max-width: 150px;
+            margin-top: 20px;
+            animation: zoomIn 1s;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: #1b1b1b;
+            text-align: center;
+            animation: fadeIn 2s;
+        }
+
+        .who-am-i {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            background-color: #1b1b1b;
+            text-align: center;
+            animation: fadeInUp 1.8s;
+        }
+        .who-am-i img {
+            border-radius: 10px;
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 40px 20px;
+            background-color: #121212;
+        }
+        .service {
+            background-color: #1b1b1b;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 1s forwards;
+        }
+        .service:nth-child(odd) {
+            animation-delay: 0.3s;
+        }
+        .service:nth-child(even) {
+            animation-delay: 0.6s;
+        }
+
+        .portfolio {
+            padding: 40px 20px;
+            background-color: #121212;
+        }
+        .portfolio h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeInDown 1.5s;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item {
+            text-align: center;
+            transform: scale(0.8);
+            opacity: 0;
+            animation: zoomIn 1s forwards;
+        }
+        .gallery-item:nth-child(odd) {
+            animation-delay: 0.3s;
+        }
+        .gallery-item:nth-child(even) {
+            animation-delay: 0.6s;
+        }
+        .gallery-item img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .gallery-item p {
+            margin-top: 10px;
+            color: #b3b3b3;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1b1b1b;
+            color: #b3b3b3;
+            animation: fadeInUp 1s;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                flex-direction: row;
+                justify-content: center;
+                text-align: left;
+                padding: 150px 20px 50px;
+            }
+            .hero img {
+                margin: 0 20px;
+                max-width: 200px;
+            }
+            .who-am-i {
+                flex-direction: row;
+                text-align: left;
+                gap: 20px;
+            }
+            .contact-info {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Sabij Adhikari</div>
+    </header>
+
+    <section class="hero">
+        <div class="text">
+            <h1>Hi There!<br>I am a Chatbot Developer</h1>
+            <p>Create chatbot as effective as possible.</p>
+            <a href="#" class="btn">Hire Me</a>
+        </div>
+        <img src="Leonardo_Phoenix_10_Create_a_sleek_and_modern_representation_o_0.jpg" alt="Hero Image">
+    </section>
+
+    <section class="contact-info">
+        <div>
+            <p>Email</p>
+            <p>sabijadhikari29@gmail.com</p>
+        </div>
+        <div>
+            <p>Phone</p>
+            <p>+977-9845435497</p>
+        </div>
+        <div>
+            <p>Location</p>
+            <p>Kathmandu, Nepal</p>
+        </div>
+    </section>
+
+    <section class="who-am-i">
+        <img src="471164886_1243402390103074_2999990466234910997_n.jpg" alt="Profile Picture">
+        <div class="text">
+            <h2>Who am I?</h2>
+            <p>I am a chatbot developer, UX/UI designer, graphic designer, and expert in branding, marketing, and SEO. I specialize in crafting intuitive designs, enhancing brand visibility, and delivering tailored digital solutions to meet unique business needs.</p>
+        </div>
+    </section>
+
+    <section class="portfolio">
+        <h2>My Work</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="Screenshot 2025-01-01 123605.png" alt="Project 1">
+                <p>Project 1: Description of the project or work done.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="Screenshot 2025-01-01 123848.png" alt="Project 2">
+                <p>Project 2: Description of the project or work done.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="Screenshot 2025-01-01 124303.png" alt="Project 3">
+                <p>Project 3: Description of the project or work done.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="Screenshot 2025-01-01 132303.png" alt="Project 4">
+                <p>Project 4: Description of the project or work done.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="service">
+            <h3>Chatbot Developer</h3>
+            <p>Chatbots streamline customer care, reduce costs, and turn website visitors into potential clients with ease and efficiency.</p>
+        </div>
+        <div class="service">
+            <h3>Graphic Designer</h3>
+            <p>Designing visuals that captivate and communicate, I bring ideas to life with creativity and precision.</p>
+        </div>
+        <div class="service">
+            <h3>UI | UX Designer</h3>
+            <p>Crafting intuitive and engaging user experiences through seamless design.</p>
+        </div>
+        <div class="service">
+            <h3>Customer Support</h3>
+            <p>Providing efficient and empathetic support to enhance customer satisfaction.</p>
+        </div>
+        <div class="service">
+            <h3>Branding</h3>
+            <p>Building strong, memorable brands that resonate with audiences.</p>
+        </div>
+        <div class="service">
+            <h3>Marketing</h3>
+            <p>Driving growth through strategic and impactful marketing solutions.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Contact me to develop your chatbot; it helps to turn your website visitors into clients.</p>
+        <p>&copy; 2025 Sabij Adhikari. All rights reserved.</p>
+    </footer>
+    <script> window.chtlConfig = { chatbotId: "3913299667" } </script>
+<script async data-id="3913299667" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+</body>
+</html>
